@@ -138,7 +138,6 @@ public class DataBaseUtils {
         
         }catch(Exception e){
             throw new Exception("Ошибка при заполнении таблицы разделов." + e.getMessage());
-        }
-    
+        }    
     }
 }
