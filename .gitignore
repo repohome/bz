@@ -1,2 +1,4 @@
 *.class
 *.log
+*.properties
+nbproject/private/private.xml

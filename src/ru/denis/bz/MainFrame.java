@@ -80,8 +80,10 @@ public class MainFrame extends javax.swing.JFrame {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(320, 322));
 
+        jTree1.setModel(new TreeUtils().createNodes());
         jTree1.setAutoscrolls(true);
         jTree1.setMaximumSize(new java.awt.Dimension(1200, 1200));
+        jTree1.setRootVisible(false);
         jScrollPane1.setViewportView(jTree1);
         jTree1.getAccessibleContext().setAccessibleName("");
         jTree1.getAccessibleContext().setAccessibleDescription("");
