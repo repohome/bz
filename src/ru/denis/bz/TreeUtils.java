@@ -25,7 +25,7 @@ public class TreeUtils {
         
         try{
                         
-            DefaultMutableTreeNode root = new DefaultMutableTreeNode("Корневой элемент");
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode(new NodeTr("Корневой элемент", 0, true));
             
             
             fillRazdelName(root);
@@ -49,11 +49,13 @@ public class TreeUtils {
             con = du.getConnect();
             stmt = con.createStatement() ;
            
+            Integer idParent = ((NodeTr)parent.getUserObject()).getId();
+            
             String sqlTxt = "select id, name, parent from razdel where parent ";
-            if(parent == null){
+            if(idParent == 0){
                 sqlTxt = sqlTxt + " is null";
             }else{
-                sqlTxt = sqlTxt + " = " + 2;
+                sqlTxt = sqlTxt + " = " + idParent;
             }
             
             res = stmt.executeQuery(sqlTxt);
@@ -61,7 +63,8 @@ public class TreeUtils {
            
            
             while(res.next()){
-                DefaultMutableTreeNode rri = new DefaultMutableTreeNode(res.getString("name"));
+                NodeTr obji = new NodeTr(res.getString("name"), res.getInt("id"), true);
+                DefaultMutableTreeNode rri = new DefaultMutableTreeNode(obji);
                 
                 parent.add(rri);
                 

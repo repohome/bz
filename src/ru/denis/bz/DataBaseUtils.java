@@ -106,6 +106,7 @@ public class DataBaseUtils {
                 fillRazdel("insert into razdel(id, name, note, parent) values (4, 'LINUX', 'Создан автоматически', 1)");
                 fillRazdel("insert into razdel(id, name, note, parent) values (5, 'Postgrees', 'Создан автоматически', 1)");
                 fillRazdel("insert into razdel(id, name, note, parent) values (6, 'glassfish', 'Создан автоматически', 1)");
+                fillRazdel("insert into razdel(id, name, note, parent) values (7, 'glassfish4.0', 'Создан автоматически', 6)");
            }        
            
             
