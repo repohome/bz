@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package ru.denis.bz;
+package ru.denis.bz.ui;
+
+import ru.denis.bz.ui.contener.TreeUtils;
 
 /**
  *
@@ -83,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
         jTree1.setModel(new TreeUtils().createNodes());
         jTree1.setAutoscrolls(true);
         jTree1.setMaximumSize(new java.awt.Dimension(1200, 1200));
+        jTree1.setName(""); // NOI18N
         jTree1.setRootVisible(false);
         jScrollPane1.setViewportView(jTree1);
         jTree1.getAccessibleContext().setAccessibleName("");

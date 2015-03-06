@@ -1,8 +1,9 @@
 /**
  * Класс для обслуживания дерева объектов
  */
-package ru.denis.bz;
+package ru.denis.bz.ui.contener;
 
+import ru.denis.bz.ui.contener.NodeRazdel;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -10,6 +11,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
+import ru.denis.bz.DataBaseUtils;
 
 /**
  *
@@ -25,7 +27,7 @@ public class TreeUtils {
         
         try{
                         
-            DefaultMutableTreeNode root = new DefaultMutableTreeNode(new NodeTr("Корневой элемент", 0, true));
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode(new NodeRazdel("Корневой элемент", 0, null));
             
             
             fillRazdelName(root);
@@ -49,7 +51,7 @@ public class TreeUtils {
             con = du.getConnect();
             stmt = con.createStatement() ;
            
-            Integer idParent = ((NodeTr)parent.getUserObject()).getId();
+            Integer idParent = ((NodeRazdel)parent.getUserObject()).getId();
             
             String sqlTxt = "select id, name, parent from razdel where parent ";
             if(idParent == 0){
@@ -63,7 +65,7 @@ public class TreeUtils {
            
            
             while(res.next()){
-                NodeTr obji = new NodeTr(res.getString("name"), res.getInt("id"), true);
+                NodeRazdel obji = new NodeRazdel(res.getString("name"), res.getInt("id"), res.getString("note"));
                 DefaultMutableTreeNode rri = new DefaultMutableTreeNode(obji);
                 
                 parent.add(rri);

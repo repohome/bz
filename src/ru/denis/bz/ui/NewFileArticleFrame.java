@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package ru.denis.bz;
+package ru.denis.bz.ui;
 
 /**
  *

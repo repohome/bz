@@ -1,24 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ru.denis.bz;
+
+package ru.denis.bz.ui.contener;
 
 /**
- *
+ * Контейнер для хранения элемента раздела.
  * @author naumenko_ds
  */
-public class NodeTr {
+public class NodeRazdel {
     
     private String name;
     private Integer id;
-    private boolean isLeaf;
+    private boolean isLeaf = false;
+    private String note;
     
-    public NodeTr(String name, Integer id, boolean isLeaf) {
+    public NodeRazdel(String name, Integer id, String note) {
         this.name = name;
         this.id = id;
-        this.isLeaf = isLeaf;
+        this.note = note;
     }
 
     public Integer getId() {
@@ -28,6 +25,12 @@ public class NodeTr {
     public boolean getIsLeaf(){
         return isLeaf;
     }
+
+    public String getNote() {
+        return note;
+    }
+    
+    
     
     @Override
     public String toString() {
