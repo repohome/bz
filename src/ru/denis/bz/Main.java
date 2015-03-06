@@ -1,7 +1,17 @@
 package ru.denis.bz;
 
+import java.awt.AWTException;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
+import javax.swing.ImageIcon;
 import ru.denis.bz.ui.MainFrame;
 import ru.denis.bz.ui.MainWindow;
+import ru.denis.bz.utils.AppConstants;
 
 /**
  *
@@ -32,7 +42,44 @@ public class Main {
             public void run() {
                 new MainWindow().setVisible(true);                
             }
-        });               
+        });
+        
+        setTrayIcon();
+    }
+    
+    // помещаем в трей значек
+    private static void setTrayIcon() {
+        if(! SystemTray.isSupported() ) {
+          return;
+        }
+
+        PopupMenu trayMenu = new PopupMenu();
+        MenuItem item = new MenuItem("Выйти");
+        item.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+          }
+        });
+        trayMenu.add(item);
+
+        URL imageURL = Main.class.getResource("images/calendar.png");
+
+        ImageIcon icon = new ImageIcon(imageURL);
+        
+        
+        TrayIcon trayIcon = new TrayIcon(icon.getImage(), AppConstants.APP_NAME, trayMenu);
+        trayIcon.setImageAutoSize(true);
+
+        SystemTray tray = SystemTray.getSystemTray();
+        try {
+          tray.add(trayIcon);
+        } catch (AWTException e) {
+          e.printStackTrace();
+        }
+
+        trayIcon.displayMessage(AppConstants.APP_NAME, "Программа запущенна!",
+                                TrayIcon.MessageType.INFO);
     }
     
 }

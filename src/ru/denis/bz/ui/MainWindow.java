@@ -1,6 +1,8 @@
 package ru.denis.bz.ui;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import ru.denis.bz.ui.tree.FindField;
 import ru.denis.bz.ui.tree.TreeRazdel;
 
 /**
@@ -21,18 +23,23 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     private javax.swing.JTree treeRazdel;
-    
+    private javax.swing.JTextField findField;
     
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        JPanel contents = new JPanel(); 
+        
         treeRazdel = new TreeRazdel();
+        findField = new FindField(treeRazdel);
         
-        
+        contents.add(findField);
+        contents.add(treeRazdel);
         
         // добавляем компонент на панель
-        getContentPane().add(new JScrollPane(treeRazdel));
+        getContentPane().add(contents);
+        //getContentPane().add(new JScrollPane(treeRazdel));
         
        
 //        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
