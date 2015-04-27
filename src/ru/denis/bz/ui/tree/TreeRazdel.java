@@ -32,6 +32,8 @@ public class TreeRazdel extends JTree{
     public TreeRazdel() {
         this.setModel(createTreeModel());
         this.setRootVisible(false);
+        this.setAutoscrolls(true);
+        
         //Enable tool tips.
         ToolTipManager.sharedInstance().registerComponent(this);
         
